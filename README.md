@@ -1,5 +1,4 @@
-# soundex-portugues
-Similar à função Soundex do SQL Server mas levando em consideração a língua portuguesa
+# Função que compara palavras similares em português, ainda que com escritas diferentes
 
 Trabalho com bancos de dados há muitos anos (principalmente programação - procedures, views -, performance com criação de índices e análise de queries e ETL - migração de dados).
 Algo que me aconteceu foi que que a empresa queria unificar cidades iguais mas que houve erro de digitação e constavam como cidade diferentes. Uma análise manual seria custosa e sujeita a erros.
