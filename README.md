@@ -11,17 +11,21 @@ Para aqueles que precisam descobrir similaridade fonética entre palavras, exist
 
 A pronúncia de Smith é muito próxima de Smythe e o resultado indica que foneticamente são equivalentes (retorna S530 para cada uma da palavra passada)
 
-Então resolvi criar uma função chamada fn_similar onde passo o nome das duas cidades e a análise é feita considerando-se a língua portuguesa (s, ss e ç com sons parecidos dentre outros)
+Então resolvi criar uma função chamada fn_similar onde passo o nome das duas cidades e o máximo de diferença de letras e a análise é feita considerando-se a língua portuguesa (s, ss e ç com sons parecidos dentre outros)
 Se tivermos duas cidades no banco ("Crato" e "Cratos") que deveriam ser a mesma (o "s" foi um erro), o Soundex retorna diferente, como observado abaixo:
+
 <img width="448" height="156" alt="image" src="https://github.com/user-attachments/assets/e71891e8-5432-44fa-ac03-56399638b3ce" />
+
 
 
 Mas utilizando a função fn_similar ela trará o resultado como "1 - similar", como visto a seguir.
 <img width="435" height="146" alt="image" src="https://github.com/user-attachments/assets/ae4cfb2f-fc67-41d2-8af4-6fffeec6681f" />
 
-
-A função sn_similar usa  função fn_soundex_pt (a soundex adaptada para o português - também descrita no código)
+No exemplo acima a "distância fonética" máxima é de 1, ou seja, se houver até uma letra de diferença ela retornar 1 (similar). Se quiser ser mais flexível poderia colocar 2 na chamada da função, que iria considerar similar até 2 letras de diferença.
+Ex: fn_similar('Crato','Cratoos,2) retornaria 1, mesmo com 2 letras de diferença entre elas.
+A função fn_similar usa  função fn_soundex_pt (a soundex adaptada para o português - também descrita no código)
 A partir daí pode-se analisar com mais profundidade e descobrir se realmente as cidades seriam as mesmas e proceder às alterações, se for o caso.
+Desta forma, muita coisa é filtrada e a análise visual é reduzida para poucos casos.
 
 O código é descrito a seguir
 
@@ -88,7 +92,7 @@ BEGIN
             WHEN @char = 'R' THEN '6'
             WHEN @char = 'A' THEN '7'
             WHEN @char = 'E' THEN '8'
-            --WHEN @char IN ('O','U') THEN '9'
+            WHEN @char IN ('O','U') THEN '9'
             ELSE ''
         END
         
