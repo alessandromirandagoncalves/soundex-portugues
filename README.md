@@ -21,9 +21,9 @@ Se tivermos duas cidades no banco ("Crato" e "Cratos") que deveriam ser a mesma 
 Mas utilizando a função fn_similar ela trará o resultado como "1 - similar", como visto a seguir.
 <img width="435" height="146" alt="image" src="https://github.com/user-attachments/assets/ae4cfb2f-fc67-41d2-8af4-6fffeec6681f" />
 
-No exemplo acima a "distância fonética" máxima é de 1, ou seja, se houver até uma letra de diferença ela retornar 1 (similar). Se quiser ser mais flexível poderia colocar 2 na chamada da função, que iria considerar similar até 2 letras de diferença.
+No exemplo acima a "distância fonética" máxima é de 1, ou seja, se houver até uma letra de diferença ela retorna 1 (similar). Se quiser ser mais flexível poderia colocar 2 na chamada da função, que iria considerar similar até 2 letras de diferença.
 Ex: fn_similar('Crato','Cratoos,2) retornaria 1, mesmo com 2 letras de diferença entre elas.
-A função fn_similar usa  função fn_soundex_pt (a soundex adaptada para o português - também descrita no código)
+A função fn_similar usa a função fn_soundex_pt (a soundex adaptada para o português - também descrita no código)
 A partir daí pode-se analisar com mais profundidade e descobrir se realmente as cidades seriam as mesmas e proceder às alterações, se for o caso.
 Desta forma, muita coisa é filtrada e a análise visual é reduzida para poucos casos.
 
